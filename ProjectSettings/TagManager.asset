@@ -8,6 +8,7 @@ TagManager:
   - coin
   - pit
   - mace
+  - waypoint
   layers:
   - Default
   - TransparentFX
