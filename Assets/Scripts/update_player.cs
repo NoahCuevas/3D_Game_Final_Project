@@ -31,6 +31,12 @@ public class update_player : MonoBehaviour
             Respawn();
         }
 
+        if (collision.gameObject.CompareTag("enemy"))
+        {
+            // sound_manager.Instance.PlaySound3D("Bomb", transform.position); // Plays random sound effect from group of clips
+            life_counter.instance.subLife();
+        }
+
         if (collision.gameObject.CompareTag("pit"))
         {
             // sound_manager.Instance.PlaySound3D("Fall", transform.position);

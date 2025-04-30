@@ -9,6 +9,7 @@ TagManager:
   - pit
   - mace
   - waypoint
+  - enemy
   layers:
   - Default
   - TransparentFX
