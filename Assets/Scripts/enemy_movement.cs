@@ -18,8 +18,13 @@ public class enemy_movement : MonoBehaviour
         Vector3 targetPos = patrolPoints[targetPoint].position;
         targetPos.y = fixedY;
 
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+        Vector3 direction = targetPos - transform.position;
+        if (direction != Vector3.zero)
+        {
+            transform.forward = direction.normalized; // Rotate to face direction of movement
+        }
 
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
         
     }
 

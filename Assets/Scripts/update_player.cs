@@ -1,11 +1,17 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class update_player : MonoBehaviour
 {
     private Vector3 startPosition;
+    private Vector3 lastCheckpointPosition;
+
+    public GameObject checkpointTextbox;
     private void Start()
     {
         startPosition = transform.position;
+        lastCheckpointPosition = startPosition;
+        checkpointTextbox.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -22,6 +28,13 @@ public class update_player : MonoBehaviour
             Destroy(collision.gameObject);
             // sound_manager.Instance.PlaySound3D("Coin", transform.position);
             life_counter.instance.addPoints(); //Adds points to the counter once coin is collected
+        }
+
+        if (collision.gameObject.CompareTag("heart"))
+        {
+            Destroy(collision.gameObject);
+            // sound_manager.Instance.PlaySound3D("Coin", transform.position);
+            life_counter.instance.addLife(); //Adds points to the counter once coin is collected
         }
 
         if (collision.gameObject.CompareTag("mace"))
@@ -43,11 +56,31 @@ public class update_player : MonoBehaviour
             life_counter.instance.subLife();
             Respawn();
         }
+
+        if (collision.gameObject.CompareTag("checkpoint"))
+        {
+            checkpoint_tracker checkpoint = collision.gameObject.GetComponent<checkpoint_tracker>();
+            if (checkpoint != null && !checkpoint.activated)
+            {
+                checkpointTextbox.SetActive(true);
+                checkpoint.activated = true;
+                lastCheckpointPosition = collision.transform.position;
+                //sound_manager.Instance.PlaySound3D("Checkpoint", transform.position);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("checkpoint"))
+        {
+            checkpointTextbox.SetActive(false); // hide checkpoint box when leaving checkpoint area
+        }
     }
 
     void Respawn()
     {
-        transform.position = startPosition;  // Move to start position
+        transform.position = lastCheckpointPosition;  // Move to start position
         CharacterController controller = GetComponent<CharacterController>();
         if (controller != null)
         {

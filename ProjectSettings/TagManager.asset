@@ -10,6 +10,8 @@ TagManager:
   - mace
   - waypoint
   - enemy
+  - heart
+  - checkpoint
   layers:
   - Default
   - TransparentFX
