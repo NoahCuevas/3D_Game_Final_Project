@@ -3,15 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - bomb
-  - coin
-  - pit
-  - mace
-  - waypoint
-  - enemy
-  - heart
-  - checkpoint
+  tags: []
   layers:
   - Default
   - TransparentFX
