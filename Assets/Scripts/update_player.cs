@@ -7,6 +7,11 @@ public class update_player : MonoBehaviour
     private Vector3 lastCheckpointPosition;
 
     public GameObject checkpointTextbox;
+    
+    // used to show win screen
+    public GameObject player;
+    public win_lose_screens winScreen;
+
     private void Start()
     {
         startPosition = transform.position;
@@ -19,40 +24,40 @@ public class update_player : MonoBehaviour
         if (collision.gameObject.CompareTag("bomb"))
         {
             Destroy(collision.gameObject);
-            // sound_manager.Instance.PlaySound3D("Bomb", transform.position); // Plays random sound effect from group of clips
+            sound_manager.Instance.PlaySound3D("Bomb", transform.position); // Plays random sound effect from group of clips
             life_counter.instance.subLife();
         }
 
         if (collision.gameObject.CompareTag("coin"))
         {
             Destroy(collision.gameObject);
-            // sound_manager.Instance.PlaySound3D("Coin", transform.position);
+            sound_manager.Instance.PlaySound3D("Coin", transform.position);
             life_counter.instance.addPoints(); //Adds points to the counter once coin is collected
         }
 
         if (collision.gameObject.CompareTag("heart"))
         {
             Destroy(collision.gameObject);
-            // sound_manager.Instance.PlaySound3D("Coin", transform.position);
+            sound_manager.Instance.PlaySound3D("Coin", transform.position);
             life_counter.instance.addLife(); //Adds points to the counter once coin is collected
         }
 
         if (collision.gameObject.CompareTag("mace"))
         {
-            // sound_manager.Instance.PlaySound3D("Mace", transform.position);
+            sound_manager.Instance.PlaySound3D("Mace", transform.position);
             life_counter.instance.subLife(); //Deducts from the life counter once player comes into contact with "Mace"
             Respawn();
         }
 
         if (collision.gameObject.CompareTag("enemy"))
         {
-            // sound_manager.Instance.PlaySound3D("Bomb", transform.position); // Plays random sound effect from group of clips
+            sound_manager.Instance.PlaySound3D("Bomb", transform.position); // Plays random sound effect from group of clips
             life_counter.instance.subLife();
         }
 
         if (collision.gameObject.CompareTag("pit"))
         {
-            // sound_manager.Instance.PlaySound3D("Fall", transform.position);
+            sound_manager.Instance.PlaySound3D("Fall", transform.position);
             life_counter.instance.subLife();
             Respawn();
         }
@@ -65,8 +70,23 @@ public class update_player : MonoBehaviour
                 checkpointTextbox.SetActive(true);
                 checkpoint.activated = true;
                 lastCheckpointPosition = collision.transform.position;
-                //sound_manager.Instance.PlaySound3D("Checkpoint", transform.position);
+                sound_manager.Instance.PlaySound3D("Checkpoint", transform.position);
             }
+        }
+
+        if (collision.gameObject.CompareTag("DialogueTrigger"))
+        {  
+            dialogue_trigger trigger = collision.gameObject.GetComponent<dialogue_trigger>();
+
+            if (trigger != null)
+            {
+                trigger.TriggerDialogue();
+            }
+        }
+
+        if (collision.gameObject.CompareTag("End"))
+        {
+            winScreen.ShowWinScreen();
         }
     }
 

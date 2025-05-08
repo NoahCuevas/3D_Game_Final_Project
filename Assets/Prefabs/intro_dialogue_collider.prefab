@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4975898523518543629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8197163095350742144}
+  - component: {fileID: 2556262404945810814}
+  m_Layer: 0
+  m_Name: intro_dialogue_collider
+  m_TagString: DialogueTrigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8197163095350742144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4975898523518543629}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0036776399, y: -0.9999819, z: -0.0047673155, w: 0.00012529732}
+  m_LocalPosition: {x: -6.08, y: -0.99, z: 1}
+  m_LocalScale: {x: -0.6235418, y: 0.7129472, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2556262404945810814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4975898523518543629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a213d9817b22f488a8880b4ca3e4eb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    dialogueLines:
+    - character:
+        name: Orange
+        icon: {fileID: 4130640169021434097, guid: f380f82a31f09403bbcd1346a94b2e6c, type: 3}
+      line: Can anybody hear me?! I'm stranded in this open field and can't find
+        my friends.
+    - character:
+        name: Orange
+        icon: {fileID: 4130640169021434097, guid: f380f82a31f09403bbcd1346a94b2e6c, type: 3}
+      line: All I know is that those enemies and traps are dangerous, so avoid them!
+        Those coins and batteries look nice, though.
+    - character:
+        name: Orange
+        icon: {fileID: 4130640169021434097, guid: f380f82a31f09403bbcd1346a94b2e6c, type: 3}
+      line: If there's someone out there, use WASD for movement, Spacebar to jump,
+        and LShift to dash. Come find me, please!
+    - character:
+        name: Red
+        icon: {fileID: 6937817954938267909, guid: 9cd73eb4cda55426dbea2b839d851644, type: 3}
+      line: That sounds like Orange! I've got to go find them!

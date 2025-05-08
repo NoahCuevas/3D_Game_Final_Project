@@ -30,6 +30,9 @@ public class camera_manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        // prevent camera look when dialogue is active
+        if (dialogue_manager.Instance != null && dialogue_manager.Instance.isDialogueActive)
+            return;
 
         GetMouseInput();
         MoveCamera();

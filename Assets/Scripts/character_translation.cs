@@ -34,6 +34,15 @@ public class character_translation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // block all player movement if dialogue is active
+        if (dialogue_manager.Instance != null && dialogue_manager.Instance.isDialogueActive)
+        {
+            moveDirection = Vector3.zero;
+            if (characterController != null)
+                characterController.Move(Vector3.zero);
+            return;
+        }
+
         GetInput();
         CheckCrouch();
 
