@@ -5,10 +5,11 @@ public class restart_scene : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKey("r"))
-        {
-            Restart();
-        }
+        // add if we want player to be able to restart the game manually
+        // if (Input.GetKey("r"))
+        // {
+        //     Restart();
+        // }
     }
 
     void Restart()

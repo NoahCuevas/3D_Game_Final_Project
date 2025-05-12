@@ -17,10 +17,7 @@ public class win_lose_screens : MonoBehaviour
     }
 
     // used for buttons
-    public void MainMenu() {
-        // // destroy audio manager to stop background music + prevent 2 audio listeners
-        // Destroy(audio_manager);
-        
+    public void MainMenu() {        
         SceneManager.LoadScene("Title Menu");
     }
 
